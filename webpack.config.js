@@ -11,6 +11,11 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   devtool: 'inline-source-map',
+  devServer: {
+    watchFiles: {
+      paths: ['src/**/*']
+    }
+  },
   mode: 'development',
   module: {
     rules: [
@@ -26,13 +31,16 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
   plugins: [
     new HTMLWebpackPlugin({
       title: 'Canvas',
       template: './src/html/index.html'
     }),
     new MiniCssExtractPlugin({
-      filename: 'style'
+      filename: 'style.css'
     }),
   ]
 }
